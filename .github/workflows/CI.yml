@@ -28,7 +28,7 @@ jobs:
           - os: macOS-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: julia-actions/setup-julia@latest # change version as needed
+      - uses: julia-actions/setup-julia@v1.6 # change version as needed
         with:
           version: ${{ matrix.version }}
           arch: ${{ matrix.arch }}
@@ -42,10 +42,10 @@ jobs:
             ${{ runner.os }}-test-${{ env.cache-name }}-
             ${{ runner.os }}-test-
             ${{ runner.os }}-
-      - uses: julia-actions/julia-buildpkg@latest # change version as needed
-      - uses: julia-actions/julia-runtest@latest # change version as needed
-      - uses: julia-actions/julia-processcoverage@latest # change version as needed
-      - uses: julia-actions/julia-uploadcoveralls@latest # change version as needed
+      - uses: julia-actions/julia-buildpkg@v1 # change version as needed
+      - uses: julia-actions/julia-runtest@v1 # change version as needed
+      - uses: julia-actions/julia-processcoverage@v1 # change version as needed
+      - uses: julia-actions/julia-uploadcoveralls@v1 # change version as needed
         env:
           COVERALLS_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
   docs:
@@ -53,11 +53,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: julia-actions/setup-julia@vlatest
+      - uses: julia-actions/setup-julia@v1.6
         with:
           version: "1.6" # It is strongly recommended to wrap versions in quotes.
-      - uses: julia-actions/julia-buildpkg@vlatest
-      - uses: julia-actions/julia-docdeploy@v@latest
+      - uses: julia-actions/julia-buildpkg@v1
+      - uses: julia-actions/julia-docdeploy@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCUMENTER_KEY: ${{ secrets.DOCUMENTER_KEY }}
